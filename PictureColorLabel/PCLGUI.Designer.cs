@@ -34,7 +34,9 @@ namespace PictureColorLabel
             this.labelRed = new System.Windows.Forms.Button();
             this.labelGreen = new System.Windows.Forms.Button();
             this.labelBlue = new System.Windows.Forms.Button();
+            this.RGBValue = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RGBValue)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox
@@ -58,7 +60,7 @@ namespace PictureColorLabel
             // 
             // labelRed
             // 
-            this.labelRed.Location = new System.Drawing.Point(9, 64);
+            this.labelRed.Location = new System.Drawing.Point(9, 119);
             this.labelRed.Name = "labelRed";
             this.labelRed.Size = new System.Drawing.Size(75, 23);
             this.labelRed.TabIndex = 8;
@@ -68,7 +70,7 @@ namespace PictureColorLabel
             // 
             // labelGreen
             // 
-            this.labelGreen.Location = new System.Drawing.Point(9, 93);
+            this.labelGreen.Location = new System.Drawing.Point(9, 148);
             this.labelGreen.Name = "labelGreen";
             this.labelGreen.Size = new System.Drawing.Size(75, 23);
             this.labelGreen.TabIndex = 9;
@@ -78,7 +80,7 @@ namespace PictureColorLabel
             // 
             // labelBlue
             // 
-            this.labelBlue.Location = new System.Drawing.Point(9, 122);
+            this.labelBlue.Location = new System.Drawing.Point(9, 177);
             this.labelBlue.Name = "labelBlue";
             this.labelBlue.Size = new System.Drawing.Size(75, 23);
             this.labelBlue.TabIndex = 10;
@@ -86,11 +88,29 @@ namespace PictureColorLabel
             this.labelBlue.UseVisualStyleBackColor = true;
             this.labelBlue.Click += new System.EventHandler(this.labelBlue_Click);
             // 
+            // RGBValue
+            // 
+            this.RGBValue.Location = new System.Drawing.Point(9, 90);
+            this.RGBValue.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.RGBValue.Name = "RGBValue";
+            this.RGBValue.Size = new System.Drawing.Size(75, 23);
+            this.RGBValue.TabIndex = 11;
+            this.RGBValue.Value = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            // 
             // PCLGUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(910, 449);
+            this.Controls.Add(this.RGBValue);
             this.Controls.Add(this.labelBlue);
             this.Controls.Add(this.labelGreen);
             this.Controls.Add(this.labelRed);
@@ -99,6 +119,7 @@ namespace PictureColorLabel
             this.Name = "PCLGUI";
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RGBValue)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -110,6 +131,7 @@ namespace PictureColorLabel
         private System.Windows.Forms.Button labelRed;
         private System.Windows.Forms.Button labelGreen;
         private System.Windows.Forms.Button labelBlue;
+        private System.Windows.Forms.NumericUpDown RGBValue;
     }
 }
 

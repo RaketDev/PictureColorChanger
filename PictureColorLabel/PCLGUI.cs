@@ -16,28 +16,60 @@ namespace PictureColorLabel
         {
             InitializeComponent();
         }
+        private Image img;
         private void browseButton_Click(object sender, EventArgs e)
         {
             OpenFileDialog ofd = new OpenFileDialog();
             ofd.ShowDialog();
-            Image img = Image.FromFile(ofd.FileName);
+            img = Image.FromFile(ofd.FileName);
             pictureBox.Image = img;
         }
         private void labelRed_Click(object sender, EventArgs e)
         {
-
+            labelRed.Enabled = false;
+            labelGreen.Enabled = true;
+            labelBlue.Enabled = true;
+            ChangeLabel(img, (int)RGBValue.Value, 0, 0);
         }
 
         private void labelGreen_Click(object sender, EventArgs e)
         {
-
+            labelGreen.Enabled = false;
+            labelRed.Enabled = true;
+            labelBlue.Enabled = true;
+            ChangeLabel(img, 0, (int)RGBValue.Value, 0);
         }
 
         private void labelBlue_Click(object sender, EventArgs e)
         {
-
+            labelBlue.Enabled = false;
+            labelRed.Enabled = true;
+            labelGreen.Enabled = true;
+            ChangeLabel(img, 0, 0, (int)RGBValue.Value);
         }
 
-       
+        private void ChangeLabel(Image img, int red, int green, int blue)
+        {
+            Bitmap bmp = new Bitmap(img);
+
+            for (int x = 0; x < bmp.Width; x++)
+            {
+                for (int y = 0; y < bmp.Height; y++)
+                {
+                    int newRed = bmp.GetPixel(x, y).R + red;
+                    int newGreen = bmp.GetPixel(x, y).G + green;
+                    int newBlue = bmp.GetPixel(x, y).B + blue;
+
+                    if (newRed >= 255) newRed = 255;
+                    if (newGreen >= 255) newGreen = 255;
+                    if (newBlue >= 255) newBlue = 255;
+
+                    Color color = Color.FromArgb(newRed, newGreen, newBlue);
+                    bmp.SetPixel(x, y, color);
+                }
+            }
+            pictureBox.Image = bmp;
+        }
+
     }
 }
