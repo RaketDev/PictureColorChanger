@@ -109,7 +109,7 @@ namespace PictureColorChangerGUI
                     {
                         oldBlue = bmp.GetPixel(x, y).B + imgBlue;
                     } else oldBlue = 255;
-                    Color color = Color.FromArgb(oldRed, oldGreen, oldBlue);
+                    Color color = Color.FromArgb(bmp.GetPixel(x, y).A,oldRed, oldGreen, oldBlue);
                     bmp.SetPixel(x, y, color);
                 }
             }

@@ -35,6 +35,7 @@ namespace PictureColorLabel
             this.labelGreen = new System.Windows.Forms.Button();
             this.labelBlue = new System.Windows.Forms.Button();
             this.RGBValue = new System.Windows.Forms.NumericUpDown();
+            this.LabelGray = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.RGBValue)).BeginInit();
             this.SuspendLayout();
@@ -105,11 +106,22 @@ namespace PictureColorLabel
             0,
             0});
             // 
+            // LabelGray
+            // 
+            this.LabelGray.Location = new System.Drawing.Point(9, 206);
+            this.LabelGray.Name = "LabelGray";
+            this.LabelGray.Size = new System.Drawing.Size(75, 23);
+            this.LabelGray.TabIndex = 12;
+            this.LabelGray.Text = "Gray";
+            this.LabelGray.UseVisualStyleBackColor = true;
+            this.LabelGray.Click += new System.EventHandler(this.LabelGray_Click);
+            // 
             // PCLGUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(910, 449);
+            this.Controls.Add(this.LabelGray);
             this.Controls.Add(this.RGBValue);
             this.Controls.Add(this.labelBlue);
             this.Controls.Add(this.labelGreen);
@@ -132,6 +144,7 @@ namespace PictureColorLabel
         private System.Windows.Forms.Button labelGreen;
         private System.Windows.Forms.Button labelBlue;
         private System.Windows.Forms.NumericUpDown RGBValue;
+        private System.Windows.Forms.Button LabelGray;
     }
 }
 

@@ -64,12 +64,37 @@ namespace PictureColorLabel
                     if (newGreen >= 255) newGreen = 255;
                     if (newBlue >= 255) newBlue = 255;
 
-                    Color color = Color.FromArgb(newRed, newGreen, newBlue);
+                    Color color = Color.FromArgb(bmp.GetPixel(x, y).A,newRed, newGreen, newBlue);
+                    bmp.SetPixel(x, y, color);
+                }
+            }
+            pictureBox.Image = bmp;
+        } 
+
+        private void BlackwhiteLabel(Image img)
+        {
+            Bitmap bmp = new Bitmap(img);
+
+            for (int x = 0; x < bmp.Width; x++)
+            {
+                for (int y = 0; y < bmp.Height; y++)
+                {
+                    int newRed = bmp.GetPixel(x, y).R;
+                    int newGreen = bmp.GetPixel(x, y).G;
+                    int newBlue = bmp.GetPixel(x, y).B;
+
+                    int newColor = (newRed + newGreen + newBlue) / 3;
+
+                    Color color = Color.FromArgb(bmp.GetPixel(x, y).A,newColor, newColor, newColor);
                     bmp.SetPixel(x, y, color);
                 }
             }
             pictureBox.Image = bmp;
         }
 
+        private void LabelGray_Click(object sender, EventArgs e)
+        {
+            BlackwhiteLabel(img);
+        }
     }
 }
