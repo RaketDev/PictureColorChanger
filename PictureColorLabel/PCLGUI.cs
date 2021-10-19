@@ -29,6 +29,7 @@ namespace PictureColorLabel
             labelRed.Enabled = false;
             labelGreen.Enabled = true;
             labelBlue.Enabled = true;
+            LabelGray.Enabled = true;
             ChangeLabel(img, (int)RGBValue.Value, 0, 0);
         }
 
@@ -37,6 +38,7 @@ namespace PictureColorLabel
             labelGreen.Enabled = false;
             labelRed.Enabled = true;
             labelBlue.Enabled = true;
+            LabelGray.Enabled = true;
             ChangeLabel(img, 0, (int)RGBValue.Value, 0);
         }
 
@@ -45,6 +47,7 @@ namespace PictureColorLabel
             labelBlue.Enabled = false;
             labelRed.Enabled = true;
             labelGreen.Enabled = true;
+            LabelGray.Enabled = true;
             ChangeLabel(img, 0, 0, (int)RGBValue.Value);
         }
 
@@ -83,10 +86,13 @@ namespace PictureColorLabel
                     int newGreen = bmp.GetPixel(x, y).G;
                     int newBlue = bmp.GetPixel(x, y).B;
 
-                    int newColor = (newRed + newGreen + newBlue) / 3;
+                    //int newColor = (newRed + newGreen + newBlue) / 3;
+                    //Color color = Color.FromArgb(bmp.GetPixel(x, y).A,newColor, newColor, newColor);
+                    //bmp.SetPixel(x, y, color);
 
-                    Color color = Color.FromArgb(bmp.GetPixel(x, y).A,newColor, newColor, newColor);
-                    bmp.SetPixel(x, y, color);
+                    var c = bmp.GetPixel(x, y);
+                    var rgb = (int)Math.Round(.299 * c.R + .587 * c.G + .114 * c.B);
+                    bmp.SetPixel(x, y, Color.FromArgb(c.A, rgb, rgb, rgb));
                 }
             }
             pictureBox.Image = bmp;
@@ -94,6 +100,10 @@ namespace PictureColorLabel
 
         private void LabelGray_Click(object sender, EventArgs e)
         {
+            labelBlue.Enabled = true;
+            labelRed.Enabled = true;
+            labelGreen.Enabled = true;
+            LabelGray.Enabled = false;
             BlackwhiteLabel(img);
         }
     }
