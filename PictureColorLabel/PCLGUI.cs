@@ -82,17 +82,17 @@ namespace PictureColorLabel
             {
                 for (int y = 0; y < bmp.Height; y++)
                 {
-                    int newRed = bmp.GetPixel(x, y).R;
-                    int newGreen = bmp.GetPixel(x, y).G;
-                    int newBlue = bmp.GetPixel(x, y).B;
+                    //int newRed = bmp.GetPixel(x, y).R;
+                    //int newGreen = bmp.GetPixel(x, y).G;
+                    //int newBlue = bmp.GetPixel(x, y).B;
 
                     //int newColor = (newRed + newGreen + newBlue) / 3;
                     //Color color = Color.FromArgb(bmp.GetPixel(x, y).A,newColor, newColor, newColor);
                     //bmp.SetPixel(x, y, color);
 
                     var c = bmp.GetPixel(x, y);
-                    var rgb = (int)Math.Round(.299 * c.R + .587 * c.G + .114 * c.B);
-                    bmp.SetPixel(x, y, Color.FromArgb(c.A, rgb, rgb, rgb));
+                    var rgbgray = (int)Math.Round(.299 * c.R + .587 * c.G + .114 * c.B);
+                    bmp.SetPixel(x, y, Color.FromArgb(c.A, rgbgray, rgbgray, rgbgray));
                 }
             }
             pictureBox.Image = bmp;
@@ -105,6 +105,11 @@ namespace PictureColorLabel
             labelGreen.Enabled = true;
             LabelGray.Enabled = false;
             BlackwhiteLabel(img);
+        }
+
+        private void PCLGUI_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

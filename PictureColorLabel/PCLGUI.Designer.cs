@@ -130,6 +130,7 @@ namespace PictureColorLabel
             this.Controls.Add(this.browseButton);
             this.Name = "PCLGUI";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.PCLGUI_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.RGBValue)).EndInit();
             this.ResumeLayout(false);
